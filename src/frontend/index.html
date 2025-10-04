@@ -1,0 +1,217 @@
+<!-- Main dashboard HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paradey</title>
+  <link rel="icon" type="image/png" href="img/logo.png?v=2">
+
+ <!-- Leaflet CSS -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+ <!-- Leaflet JS -->
+ <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+ <!-- Routing Machine CSS -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+ <!-- Routing Machine JS -->
+ <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+ <!-- ApexCharts JS -->
+ <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+ <!-- Custom CSS -->
+ <link rel="stylesheet" href="dashboard_style.css" />
+</head>
+
+<body>
+  <!-- Top container -->
+  <div class="top-container">
+    <img src="img/logo.png" alt="Logo" class="logo" width="40">
+    <h1 class="title">Paradey</h1>
+   
+    <!-- Comfort Index Bar -->
+    <div class="comfort-bar" id="comfortIndex">
+      <span class="label">Comfort Index</span>
+      <div class="bar">
+        <div class="fill" id="fill"></div>
+      </div>
+    </div>
+    <button id="applyBtn">Apply</button>
+    
+    <!-- Export Dropdown -->
+    <div class="dropdown">
+      <button id="exportBtn" class="dropbtn">Export as</button>
+      <div id="exportDropdown" class="dropdown-content">
+        <button data-type="weather" data-format="json">Analysis Result(.json)</button>
+        <button data-type="weather" data-format="pdf">Analysis Result(.pdf)</button>
+        <button data-type="weather" data-format="csv">Analysis Result(.csv)</button>
+        <button data-type="metadata" data-format="json">Metadata(.json)</button>
+        <button data-type="metadata" data-format="pdf">Metadata(.pdf)</button>
+        <button data-type="metadata" data-format="csv">Metadata(.csv)</button>
+      </div>
+    </div>
+    <button id="loginBtn">Login/Sign Up</button>
+  </div>
+  
+  <div class="main-container">
+    <!-- Left container -->
+    <div class="left-container">
+      <!-- Map container -->
+      <div id="map">
+        <div id="search-container">
+            <input id="search-input" type="text" placeholder="Search by name or lat,lng">
+            <button id="search-btn">Search</button>
+        </div>
+        <ul id="results-panel"></ul>
+        
+        <!-- Date picker under search bar -->
+        <div id="date-picker-container">
+          <label for="selected-month">Date:</label>
+          <input id="selected-month" type="month" placeholder="YYYY-MM">
+        </div>
+      </div>
+
+      <!-- Weather variable filter -->
+      <div class="weather-container">
+        <div class="weather-top">
+          <p class="weather-filter">Variable Filter</p>
+          <button id="weather-settings-btn" title="Settings">Edit Preferences</button>
+          <button id="clearAll-btn">Clear All</button>
+        </div>
+        <div class="filter-container">
+            <button id="tempBtn" class="weatherBtn">Temperature</button>
+            <button id="hmdBtn" class="weatherBtn">Humidity</button>
+            <button id="wsBtn" class="weatherBtn">Windspeed</button>
+            <button id="rfBtn" class="weatherBtn">Rainfall</button>
+            <button id="aqBtn" class="weatherBtn">Air quality</button>
+            <button id="snoBtn" class="weatherBtn">Snowfall</button>
+        </div>
+      </div>
+    </div>
+  
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <div class="weather-cards-top" id="weather-cards-top">
+      <!--Cards will be add dynamically-->
+    </div>
+
+    <div class="bottom-widgets">
+        <div class="graph">
+          <div class="graph-top">
+            <h3>Statistics</h3>
+            <select id="graph-select" aria-label="Graph-select">
+                <option value="decade-trend">Decade Trend</option>
+                <option value="seasonal-pattern">Seasonal Pattern</option>
+                <option value="anomaly-chart">Anomaly Chart</option>
+            </select>
+          </div>
+            <div class="chart-container">
+              <!--<div class="expand-icon" title="Expand Graph">&#x26F6;</div>-->
+              <div class="chart-placeholder-text">Awaiting data...</div>
+            </div>
+        </div>
+        
+        <div class="bottom-right">
+          <div class="alert">
+              <h3>Alerts</h3>
+              <p>No alerts to display. Perform analysis to check for warnings.</p>
+          </div>
+          
+          <div class="recommendation">
+              <h3>Recommendation</h3>
+              <p>No recommendations yet. Run analysis to get insightful tips.</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="preferencesModal" class="modal hidden">
+  <div class="modal-content">
+    <!-- Close Button Top Right -->
+    <button id="closePreferences-btn" class="close-btn">&times;</button>
+
+    <h2>Edit Weather Thresholds</h2>
+    <p class="modal-info">
+      ⚠️ Adjusting these thresholds will affect the analysis results.
+    </p>
+
+    <form id="preferencesForm">
+      <div class="form-grid">
+        <div>
+          <label for="temp-threshold">Temperature (°C):</label>
+          <input type="number" id="temp-threshold" value="30">
+        </div>
+        <div>
+          <label for="humidity-threshold">Humidity (RH%):</label>
+          <input type="number" id="humidity-threshold" value="75">
+        </div>
+        <div>
+          <label for="wind-threshold">Windspeed (km/h):</label>
+          <input type="number" id="wind-threshold" value="50">
+        </div>
+        <div>
+          <label for="rain-threshold">Rainfall (mm/day):</label>
+          <input type="number" id="rain-threshold" value="5">
+        </div>
+        <div>
+          <label for="aq-threshold">Air Quality (AOD):</label>
+          <input type="number" id="aq-threshold" value="0.25">
+        </div>
+        <div>
+          <label for="snow-threshold">Snowfall (cm/day):</label>
+          <input type="number" id="snow-threshold" value="5">
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" class="primary">Save</button>
+        <button type="button" id="resetDefaults-btn" class="secondary">Back to Default</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast hidden">Changes saved successfully!</div>
+
+<!-- Error popup -->
+<div id="error-popup">
+  <div class="popup-content">        
+    <p id="error-message"></p>
+    <button id="close-popup">OK</button>
+  </div>
+</div>
+
+
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>
+        <strong>Paradey Climate Outlook Dashboard</strong>  
+      </p>
+      <p>
+      Powered by <a href="https://opendap.nasa.gov" target="_blank" rel="noopener">
+        NASA OPeNDAP
+      </a> · Based on analysis of the past <strong>10 years</strong> of observational weather data
+      </p>
+        <p class="footer-note">
+          © 2025 Paradey · For demonstration, research and educational purposes only
+        </p>
+    </div>
+  </footer>
+
+  <!-- Leaflet + Routing Machine -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  
+  <!-- External script -->
+  <script src="script.js"></script>
+  <script src="map.js"></script>
+  <script src="weatherFilter.js"></script>
+  <script src="visualization.js"></script>
+  <script src="comfortIdx.js"></script>
+</body>
+</html>
