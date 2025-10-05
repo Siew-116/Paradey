@@ -1,0 +1,342 @@
+<!-- Main dashboard HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paradey</title>
+  <link rel="icon" type="image/png" href="img/logo.png?v=2">
+  <!-- Google fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+ <!-- Leaflet CSS -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+ <!-- Leaflet JS -->
+ <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+ <!-- Routing Machine CSS -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+ <!-- Routing Machine JS -->
+ <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+ <!-- ApexCharts JS -->
+ <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+ <!-- Custom CSS -->
+ <link rel="stylesheet" href="dashboard_style.css" />
+</head>
+
+<body>
+  <!-- Top container -->
+  <div class="top-container">
+    <img src="img/logo.png" alt="Logo" class="logo" width="40">
+    <h1 class="title">Paradey</h1>
+  
+    <button id="applyBtn">Apply</button>
+    
+    <!-- Export Dropdown -->
+    <div class="dropdown">
+      <button id="exportBtn" class="dropbtn">Export as</button>
+      <div id="exportDropdown" class="dropdown-content">
+        <button data-type="weather" data-format="json">Analysis Result(.json)</button>
+        <button data-type="weather" data-format="pdf">Analysis Result(.pdf)</button>
+        <button data-type="weather" data-format="csv">Analysis Result(.csv)</button>
+        <button data-type="metadata" data-format="json">Metadata(.json)</button>
+        <button data-type="metadata" data-format="pdf">Metadata(.pdf)</button>
+        <button data-type="metadata" data-format="csv">Metadata(.csv)</button>
+      </div>
+    </div>
+    <button id="loginBtn">Login/Sign Up</button>
+  </div>
+  
+ 
+    <!-- Left container -->
+    <div class="first-container">
+      <div class="first-flex">
+        <!-- Map container -->
+        <div id="map">
+          <div id="search-container">
+              <input id="search-input" type="text" placeholder="Search by name or lat,lng">
+              <button id="search-btn">Search</button>
+          </div>
+          <ul id="results-panel"></ul>
+          
+          <!-- Date picker under search bar -->
+          <div id="date-picker-container">
+            <label for="selected-month">Date:</label>
+            <input id="selected-month" type="month" placeholder="YYYY-MM">
+          </div>
+        </div>
+
+        <div class="first-right">
+        <!-- Chosen Loc & Date -->
+        <div class="prompt-container">
+          <h3 id="location-title">Location</h3>
+          <p id="coords">lat, lon</p>
+          <div class="date-container">
+            <button id="month" class="month">Month</button>
+            <button id="year" class="year">Year</button>
+          </div>  
+        </div>
+        <!-- Weather variable filter -->
+        <div class="weather-container">
+            <div class="filter-top">
+              <span class="material-symbols-outlined">filter_alt</span>
+              <p class="weather-filter">Variable Filter</p>  
+            </div>
+            <div class="filter-container">
+              <button id="tempBtn" class="weatherBtn">Temperature</button>
+              <button id="hmdBtn" class="weatherBtn">Humidity</button>
+              <button id="wsBtn" class="weatherBtn">Windspeed</button>
+              <button id="rfBtn" class="weatherBtn">Rainfall</button>
+              <button id="aqBtn" class="weatherBtn">Air quality</button>
+              <button id="snoBtn" class="weatherBtn">Snowfall</button>
+            </div>
+            <div class="filter-bottom">
+              <button id="weather-settings-btn" title="Settings">Edit Preferences</button>
+              <button id="clearAll-btn">Clear All</button>
+            </div>
+        </div>
+      
+        </div>
+
+      </div>  
+    </div>
+  
+
+    
+    <div class="second-container">
+      <h3 class="second-title">Signals From the Future</h3>
+      <div class="weather-cards-top" id="weather-cards-top">
+        <!--Cards will be add dynamically-->
+      </div>
+    </div>
+    
+
+    <div class="last-container">
+            <h3 class="last-title">Pro Tips Zone</h3>
+            <div class="last-flex">
+              <!-- Comfort Index Widget -->
+              <div class="comfort-widget">
+                <h3 class="current-loc">Current Location</h3>
+                <div class="animated-bg"></div>
+                <!-- Score Circle -->
+                <div class="score-circle">
+                  <span id="comfortScore">0</span>
+                  <span class="score-text">Score</span>
+                </div>
+
+                <!-- Label -->
+                <div class="label">Comfort Index</div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                  <div class="scale">
+                    <span>0</span><span>50</span><span>100</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="shimmer"></div>
+                  </div>
+                </div>
+
+                <!-- 🌟 Star Rating Section -->
+                <div class="star-rating">
+                  <div class="star" data-value="1"><span class="material-symbols-outlined">family_star</span></div>
+                  <div class="star" data-value="2"><span class="material-symbols-outlined">family_star</span></div>
+                  <div class="star" data-value="3"><span class="material-symbols-outlined">family_star</span></div>
+                </div>
+              </div>
+
+
+              <!-- Top 3 Alternatives Panel with Smart Suggestions -->
+              <div class="recommend-container">
+                <h3 class="recommend-title">
+                  <span class="material-symbols-outlined">tips_and_updates</span>
+                  Top 3 Alternative Recommendations
+                </h3>
+
+                <div class="top3-cards">
+                  <!-- Card 1 -->
+                  <div class="top3-card inactive top1">
+                    <div class="card-top">
+                      <div class="card-left">
+                        <div class="card-title">
+                          <div class="rank">-</div>
+                          <div class="location-name">-</div>
+                        </div>
+                        <div class="full-loc">-</div>
+                      </div>
+                      <div class="score">--</div>
+                    </div>
+                    <div class="suggestion">Waiting for analysis...</div>
+                  </div>
+
+                  <!-- Card 2 -->
+                  <div class="top3-card inactive">
+                    <div class="card-top">
+                      <div class="card-left">
+                        <div class="card-title">
+                          <div class="rank">-</div>
+                          <div class="location-name">-</div>
+                        </div>
+                        <div class="full-loc">-</div>
+                      </div>
+                      <div class="score">--</div>
+                    </div>
+                    <div class="suggestion">Waiting for analysis...</div>
+                  </div>
+
+                  <!-- Card 3 -->
+                  <div class="top3-card inactive">
+                    <div class="card-top">
+                      <div class="card-left">
+                        <div class="card-title">
+                          <div class="rank">-</div>
+                          <div class="location-name">-</div>
+                        </div>
+                        <div class="full-loc">-</div>
+                      </div>
+                      <div class="score">--</div>
+                    </div>
+                    <div class="suggestion">Waiting for analysis...</div>
+                  </div>
+                </div>
+              </div>
+
+
+              
+            </div>  
+        </div>
+    <div class="third-container">
+          <h3 class="third-title">Analysis Panel</h3>
+          <div class="third-flex">
+            <div class="graph-decade" id="decade-trend">
+              <div class="graph-top">
+                <h3>10 Years of Change - Clear long-term perspective</h3>
+              </div>
+                <div class="decade-chart">
+                  <!--<div class="expand-icon" title="Expand Graph">&#x26F6;</div>-->
+                  <div class="chart-placeholder-text">Awaiting data...</div>
+                </div>
+              </div>
+
+            <div class="third-right">
+              <div class="graph-season" id="seasonal-patterns">
+              <div class="graph-top">
+                <h3>Monthly Season Mood - Highlight typical pattern each month</h3>
+              </div>
+                <div class="season-chart">
+                  <!--<div class="expand-icon" title="Expand Graph">&#x26F6;</div>-->
+                  <div class="chart-placeholder-text">Awaiting data...</div>
+                </div>
+              </div>
+              <div class="graph-anomaly" id="anomaly">
+              <div class="graph-top">
+                <h3>Out of Ordinary - Highlight Unusual Events</h3>
+              </div>
+                <div class="anomaly-chart">
+                  <!--<div class="expand-icon" title="Expand Graph">&#x26F6;</div>-->
+                  <div class="chart-placeholder-text">Awaiting data...</div>
+                </div>
+              </div>
+              <div class="alert">
+                    <span class="material-symbols-outlined">warning</span>
+                    <p>No alerts to display. Perform analysis to check for warnings.</p>
+              </div> 
+            </div>
+          </div>
+    </div>   
+
+          
+  </div>
+
+
+<!-- Modal -->
+<div id="preferencesModal" class="modal hidden">
+  <div class="modal-content">
+    <!-- Close Button Top Right -->
+    <button id="closePreferences-btn" class="close-btn">&times;</button>
+
+    <h2>Edit Weather Thresholds</h2>
+    <p class="modal-info">
+      ⚠️ Adjusting these thresholds will affect the analysis results.
+    </p>
+
+    <form id="preferencesForm">
+      <div class="form-grid">
+        <div>
+          <label for="temp-threshold">Temperature (°C):</label>
+          <input type="number" id="temp-threshold" value="30">
+        </div>
+        <div>
+          <label for="humidity-threshold">Humidity (RH%):</label>
+          <input type="number" id="humidity-threshold" value="75">
+        </div>
+        <div>
+          <label for="wind-threshold">Windspeed (km/h):</label>
+          <input type="number" id="wind-threshold" value="50">
+        </div>
+        <div>
+          <label for="rain-threshold">Rainfall (mm/day):</label>
+          <input type="number" id="rain-threshold" value="5">
+        </div>
+        <div>
+          <label for="aq-threshold">Air Quality (AOD):</label>
+          <input type="number" id="aq-threshold" value="0.25">
+        </div>
+        <div>
+          <label for="snow-threshold">Snowfall (cm/day):</label>
+          <input type="number" id="snow-threshold" value="5">
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" class="primary">Save</button>
+        <button type="button" id="resetDefaults-btn" class="secondary">Back to Default</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast hidden">Changes saved successfully!</div>
+
+<!-- Error popup -->
+<div id="error-popup">
+  <div class="popup-content">        
+    <p id="error-message"></p>
+    <button id="close-popup">OK</button>
+  </div>
+</div>
+
+
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>
+        <strong>Paradey Climate Outlook Dashboard</strong>  
+      </p>
+      <p>
+      Powered by <a href="https://opendap.nasa.gov" target="_blank" rel="noopener">
+        NASA OPeNDAP
+      </a> · Based on analysis of the past <strong>10 years</strong> of observational weather data
+      </p>
+        <p class="footer-note">
+          © 2025 Paradey · For demonstration, research and educational purposes only
+        </p>
+    </div>
+  </footer>
+
+  <!-- Leaflet + Routing Machine -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  
+  <!-- External script -->
+  <script src="script.js"></script>
+  <script src="map.js"></script>
+  <script src="weatherFilter.js"></script>
+  <script src="visualization.js"></script>
+  <script src="comfortIdx.js"></script>
+</body>
+</html>
