@@ -96,7 +96,7 @@ html, body {
     padding: 8px 0;
     top: 110%;
     right: 0;
-    z-index: 1000;
+    z-index: 9000;
     transition: all 0.3s ease;
 }
 
