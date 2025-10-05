@@ -73,7 +73,18 @@ document.addEventListener('DOMContentLoaded', () => {
     map.setView([lat, lng], 15);
     selectedLat = lat;
     selectedLon = lng;
-    updateApplyState();
+    /// --- Update prompt text ---
+  const shortName = name.split(",")[0];
+  const title = document.getElementById("location-title");
+  const coords = document.getElementById("coords");
+  title.textContent = shortName;
+  coords.textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+
+  // --- Change colors directly ---
+  title.style.color = " #0b3d91";        // h3 text color
+  coords.style.color = " #315594ff";       // p text color
+  
+  updateApplyState();
   }
 
   map.on("click", async (e) => {
@@ -134,7 +145,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Date picker ---
   const datePickerContainer = document.getElementById("date-picker-container");
   if (datePickerContainer) L.DomEvent.disableClickPropagation(datePickerContainer);
-  dateInput.addEventListener("input", updateApplyState);
+  dateInput.addEventListener("input", () => {
+  const [year, monthNum] = dateInput.value.split("-");
+  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const month = monthNames[parseInt(monthNum)-1];
+  
+  document.getElementById("month").textContent = month; // update button
+  document.getElementById("year").textContent = year;   // update button
+  
+  const monthBtn = document.getElementById("month");
+  const yearBtn = document.getElementById("year");
+  monthBtn.style.color = "#fff";     // button text color
+  monthBtn.style.backgroundColor = " #1b4998ff";  // button bg
+  yearBtn.style.color = "#fff";
+  yearBtn.style.backgroundColor = " #4a79caff";
+  updateApplyState();
+});
 
   // --- Weather buttons ---
   document.querySelectorAll(".weatherBtn").forEach(btn => {

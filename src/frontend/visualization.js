@@ -1,15 +1,12 @@
 // Charts & Visualisation for Analysis Result
 
 document.addEventListener("DOMContentLoaded", () => {
-  const select = document.getElementById("graph-select");
-  const chartContainer = document.querySelector(".chart-container");
+
   let chartsData = []; // store chart configs temporarily
 
   // Utility to reset container
-  function resetContainer() {
-    chartContainer.innerHTML = `
-      <div class="chart-placeholder-text"> </div>
-    `;
+  function resetContainer(container) {
+    container.innerHTML = `<div class="chart-placeholder-text"></div>`;
   }
 
   // ### Build Line Graph for Decade Trends ###
@@ -70,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ### Render Decade Trend charts ###
   function renderDecadeTrend(detail) {
-    resetContainer();
+    const chartContainer = document.querySelector(".decade-chart");
+    resetContainer(chartContainer);
     chartsData = [];
 
     detail.variables.forEach((variable, idx) => {
@@ -130,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return {
       chart: {
         type: "heatmap",
-        height: 200,
+        height: 140,
         width: 400,
         toolbar: { show: false },
         zoom: { enabled: false }
@@ -189,7 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ### Render Anomaly charts ###
   function renderAnomaly(detail) {
-    resetContainer();
+    const chartContainer = document.querySelector(".anomaly-chart");
+    resetContainer(chartContainer);
     detail.variables.forEach((variable, idx) => {
       const chartDiv = document.createElement("div");
       chartDiv.id = `traffic-light-${idx}`;
@@ -209,7 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ### Build and render Seasonal Pattern Tables ###
   function renderSeasonalPattern(detail) {
-    resetContainer();
+    const chartContainer = document.querySelector(".season-chart");
+    resetContainer(chartContainer);
 
     const monthOrder = [
       "Jan","Feb","Mar","Apr","May","Jun",
@@ -289,13 +289,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Listen for event details ===
   document.addEventListener("analysisCompleted", (e) => {
     const detail = e.detail;
-    select.addEventListener("change", (ev) => {
-      const choice = ev.target.value;
-      if (choice === "decade-trend") renderDecadeTrend(detail);
-      else if (choice === "seasonal-pattern") renderSeasonalPattern(detail);
-      else if (choice === "anomaly-chart") renderAnomaly(detail);
+    
+      renderDecadeTrend(detail);
+      renderSeasonalPattern(detail);
+      renderAnomaly(detail);
     });
-    // Trigger default view
-    select.dispatchEvent(new Event("change"));
+    
   });
-});

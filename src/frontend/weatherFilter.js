@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.onWeatherChange) window.onWeatherChange();
   });
 
+ 
   // Render weather cards in right panel
   function renderWeatherCards() {
     weatherCardsContainer.innerHTML = ''; // clear old cards
@@ -71,14 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
     activeWeather.forEach(type => {
       const data = weatherData[type];
       if (!data) return;
-
+      const weatherIcons = {
+        "Temperature": "device_thermostat",
+        "Rainfall": "rainy",
+        "Windspeed": "air",
+        "Humidity": "humidity_mid",
+        "Snowfall": "mode_cool",
+        "Air quality": "air_freshener"
+      };
+      const icon = weatherIcons[type] || "🌍"; 
       const card = document.createElement('div');
       card.classList.add('weather-card');
       card.id = `weather-card-${type}`;
       card.innerHTML = `
-        <h3>${type}</h3>
-        <p>${data.value}</p>
-        <p>${data.analysis}</p>
+        <div class="top">
+          <div class="left">
+            <span class="material-symbols-outlined">${icon}</span>
+            <h3>${type}</h3>
+          </div>
+          <p class="value">${data.value}</p>
+        </div>
+        <p class="analysis">${data.analysis}</p>
       `;
       weatherCardsContainer.appendChild(card);
     });
@@ -187,7 +201,7 @@ function getThresholdColor(desc) {
         case "Zero value":
             return "gray";
         case "✅ Below Threshold":
-            return "green";
+            return " #90ee90";
         default:
             return "#555"; // default text color
     }
@@ -242,38 +256,38 @@ const alertsData = {
   "HK Disneyland": {
     2025: [
       {
-        month: "Jan–Feb, Dec",
-        desc: "Cooler than usual with slightly below-normal temperature and humidity; Jan snowfall slightly below normal—possible cold snaps and frost patches. Gusty winds may occur in Dec."
-      },
-      {
         month: "Mar–Apr",
-        desc: "Air quality higher than usual, peaking in April; haze and smog episodes likely. Temperatures and humidity generally normal."
+        desc: "Haze and smog episodes likely."
       },
       {
-        month: "Jun–Aug",
-        desc: "Rainfall slightly above normal in Jun & Aug; temperature and humidity slightly above normal in Jul–Aug. Heatwaves possible in Jul–Aug, scattered thunderstorms likely."
+        month: "Jun–Aug 2025",
+        desc: "Slightly rainfall, high chance of heatwave and scattered thunderstorm. "
       },
       {
-        month: "Sep–Nov",
-        desc: "Windspeed slightly below normal in Sep, slightly above normal in Oct–Nov. Mild temperatures; risk of gusty winds and occasional storms."
+        month: "Sep–Nov 2025",
+        desc: "Mild temperatures; risk of gusty winds and occasional storms."
+      },
+      {
+        month: "Dec 2025",
+        desc: "Gusty winds may occur."
       }
     ],
     2026: [
       {
-        month: "Jan–Feb, Dec",
-        desc: "Cooler than usual; Jan snowfall much lower than usual. Slightly below-normal humidity; cold snaps and frost possible. Gusty winds likely in Dec."
+        month: "Mar–Apr 2026",
+        desc: "Haze and smog episodes likely."
       },
       {
-        month: "Mar–Apr",
-        desc: "Air quality higher than usual, peaking in April; haze episodes likely. Temperatures and humidity within normal range."
+        month: "Jun–Aug 2026",
+        desc: "Slightly rainfall, high chance of heatwave and scattered thunderstorm. "
       },
       {
-        month: "Jun–Aug",
-        desc: "Rainfall slightly above normal in Jun & Aug; temperature and humidity slightly above normal in Jul–Aug. Heatwaves possible, scattered thunderstorms likely."
+        month: "Sep–Nov 2026",
+        desc: "Mild temperatures; risk of gusty winds and occasional storms."
       },
       {
-        month: "Sep–Nov",
-        desc: "Windspeed slightly below normal in Sep, higher than usual in Oct–Nov. Mild temperatures; risk of gusty winds and occasional storms."
+        month: "Dec 2026",
+        desc: "Gusty winds may occur."
       }
     ]
   },
@@ -281,46 +295,30 @@ const alertsData = {
   "Kinabalu": {
     2025: [
       {
-        month: "Jan–Feb",
-        desc: "Cool, humid; air quality normal. Feb winds slightly gusty. No snowfall."
+        month: "Mar–Apr 2025",
+        desc: "Small chance of localized storms."
       },
       {
-        month: "Mar–Apr",
-        desc: "Mild; Apr slightly warmer. Small chance of localized storms."
+        month: "May–Aug 2025",
+        desc: "Risk of thunderstorms, heavy rain, and May heatwave."
       },
       {
-        month: "May–Aug",
-        desc: "High humidity in May; rainfall above normal Jun–Aug. Risk of thunderstorms, heavy rain, and May heatwave. Winds mild."
-      },
-      {
-        month: "Sep–Nov",
-        desc: "Mild; Sep normal rainfall, Oct–Nov slightly above. Occasional gusty winds and scattered storms."
-      },
-      {
-        month: "Dec",
-        desc: "Normal conditions; mild winds, no extremes."
+        month: "Sep–Nov 2025",
+        desc: "Occasional gusty winds and scattered storms."
       }
     ],
     2026: [
       {
-        month: "Jan–Feb",
-        desc: "Cool, humid; Feb winds slightly gusty. No snowfall."
+        month: "Mar–Apr 2026",
+        desc: "Small chance of localized storms."
       },
       {
-        month: "Mar–Apr",
-        desc: "Mild; Apr slightly warmer. Chance of localized storms."
+        month: "May–Aug 2026",
+        desc: "Risk of thunderstorms, heavy rain, and May heatwave."
       },
       {
-        month: "May–Aug",
-        desc: "High humidity in May; Aug rainfall slightly above normal. Risk of thunderstorms, heavy rain, and May heatwave."
-      },
-      {
-        month: "Sep–Nov",
-        desc: "Mild; Sep air quality slightly below normal. Oct–Nov rainfall slightly above, occasional gusts and scattered storms."
-      },
-      {
-        month: "Dec",
-        desc: "Normal conditions; mild winds, no extremes."
+        month: "Sep–Nov 2026",
+        desc: "Occasional gusty winds and scattered storms."
       }
     ]
   }

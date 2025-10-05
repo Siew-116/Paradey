@@ -4,7 +4,6 @@ body {
     padding: 0;
     height: 100vh;
     width: 100vw;
-    background-color: #f7f3f3;
     background: linear-gradient(to right, #0b3d91, #4facfe, #00f2fe);
     background-size: 200% 200%;
   animation: waterFloat 10s ease-in-out infinite;
