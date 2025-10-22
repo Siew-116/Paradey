@@ -1,6 +1,6 @@
 # Paradey – Climate & Weather Analytics Dashboard
 Paradey is a web-based climate and weather analytics platform that visualizes trends, highlights potential alerts, and provides alternative recommendations for better environmental decision-making. It integrates interactive maps, charts, and AI-assisted insights for an intuitive user experience.
-[Picth Video]https://youtu.be/ouacESCvwhc?si=OEjCIYsBpNxz-fHy
+[Picth Video](https://youtu.be/ouacESCvwhc?si=OEjCIYsBpNxz-fHy)
 
 ## Live Demo Link
 Try the live frontend here: [Paradey Demo](https://your-netlify-link.netlify.app)
