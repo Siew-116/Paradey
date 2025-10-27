@@ -3,7 +3,7 @@ Paradey is a web-based climate and weather analytics platform that visualizes tr
 [Picth Video](https://youtu.be/ouacESCvwhc?si=OEjCIYsBpNxz-fHy)
 
 ## Live Demo Link
-Try the live frontend here: [Paradey Demo](https://your-netlify-link.netlify.app)
+Try the live frontend here: [Paradey Demo](https://paradey.netlify.app/)
 
 ## Tech Stack
 - **Frontend:** HTML + CSS + JavaScript  
