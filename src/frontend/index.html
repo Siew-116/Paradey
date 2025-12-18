@@ -1,0 +1,180 @@
+<!-- Landing Page HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paradey</title>
+  <link rel="icon" type="image/png" href="img/logo.png?v=2">
+
+  <!-- Google fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="landing_style.css" />
+</head>
+
+<body>
+  <!-- Top container -->
+  <div class="top-container">
+    <img src="img/logo.png" alt="Logo" class="logo" width="40">
+    <h1 class="title">Paradey</h1>
+   
+    <button id="launchBtn">Launch Dashboard</button>
+  </div>
+
+  <div class="main-container">
+    <a class="brand-badge" href="#" rel="noopener noreferrer">
+      <span class="badge">
+        <svg viewBox="0 0 24 24" class="badge-icon" aria-hidden="true"><path fill="white" d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+      </span>
+      <span class="brand-text">Powered by NASA OPeNDAP</span>
+    </a>
+
+    <div class="heading-text">
+      <h3>Climate Intelligence</h3>
+      <h2>Made Simple</h2>
+      <p>Analyze 10 years of historical weather data. Gain foresight into long-term<br>climate trends. Make informed decisions for travel, events<br>and planning with real-time climate insights.</p>
+    </div>
+
+    <button class="get-started" id="get-started">Get Started Free</button>
+    <button class="learn-more">Learn More</button>
+  </div>
+
+  <div class="second-container">
+    <div class="second-top">
+      <h3>Powerful Weather Outlook</h3>
+      <p>Decades of data, clear insights for the future. See beyond forecasts.</p>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-card">
+        <div class="card-title">
+          <span class="material-symbols-outlined">globe_location_pin</span>
+          <h4>Interactive Map</h4>
+          <p>Search any location worldwide and visualize climate change projections with interactive mapping tools.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="card-title">
+          <span class="material-symbols-outlined">weather_mix</span>
+          <h4>Multi-Variable Analysis</h4>
+          <p>Monitor climate patterns — temperature, rainfall, wind, humidity, air quality, and snowfall — and plan for future</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="card-title">
+          <span class="material-symbols-outlined">data_exploration</span>
+          <h4>Trend Insights</h4>
+          <p>Leverage historical trends to predict future — decade patterns, seasonal variations, and anomalies with advanced statistical visualizations.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="card-title">
+          <span class="material-symbols-outlined">recommend</span>
+          <h4>Smart Alerts & Recommendations</h4>
+          <p>AI-powered alerts and actionable advice for visitors and planners based on key climate patterns </p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="card-title">
+          <span class="material-symbols-outlined">stars_2</span>
+          <h4>Comfort Index</h4>
+          <p>At-a-glance view of overall weather comfort rating across locations and temporals.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="card-title">
+          <span class="material-symbols-outlined">share_windows</span>
+          <h4>Export & Share</h4>
+          <p>Download weather data instantly as PDF, CSV or JSON. Share your insights anywhere, anytime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="third-container">
+    <div class="about-container">
+      <h3>About Paradey</h3>
+      <p>Paradey is a climate outlook dashboard that transforms complex NASA observational data into actionable insights. Built for travelers, event planners, researchers, and anyone who needs to understand weather patterns, our platform analyzes decades of historical climate data to help you make informed decisions.
+        <br><br>Whether you're planning a destination wedding, scheduling an outdoor event, or researching climate trends, Paradey provides the tools and visualizations you need to understand what weather conditions to expect in the future.</p>
+      <div class="data-src">
+        Data Source: NASA OPeNDAP - providing reliable, research-grade climate observations
+      </div>
+    </div>
+  </div>
+
+  <div class="fourth-container">
+    <div class="ready-container">
+      <h3>Ready to Explore with Paradey?</h3>
+      <p>Start analyzing weather outlook for any place across the world.<br>Zero dollars, zero catches, 100% data fun!</p>
+      <button class="ready-launch-btn" id="ready-launch-btn">Ready to Launch</button>
+    </div>
+  </div>
+
+  <div class="footer-container">
+    <footer class="app-footer">
+      <div class="footer-content">
+        <p>
+          <strong>Paradey Climate Outlook Dashboard</strong>  
+        </p>
+        <p>
+          Powered by <a href="https://opendap.nasa.gov" target="_blank" rel="noopener">
+            NASA OPeNDAP
+          </a> · Based on analysis of the past <strong>10 years</strong> of observational weather data
+        </p>
+
+        <p class="footer-note">
+          © 2025 Paradey · For demonstration, research and educational purposes only
+        </p>
+      </div>
+    </footer>
+  </div>
+
+<script>
+  const buttons = ["launchBtn", "ready-launch-btn", "get-started"];
+
+  buttons.forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+      btn.onclick = () => {
+        // create the fade-in image element
+        const fadeImg = document.createElement("img");
+        fadeImg.src = "img/LUNA.png";       // path to your image
+        fadeImg.alt = "Hero Background";
+        fadeImg.style.position = "fixed";
+        fadeImg.style.top = "0";
+        fadeImg.style.left = "0";
+        fadeImg.style.width = "100vw";
+        fadeImg.style.height = "100vh";
+        fadeImg.style.objectFit = "cover";
+        fadeImg.style.opacity = "0";
+        fadeImg.style.transition = "opacity 1.2s ease-in-out";
+        fadeImg.style.zIndex = "4000";
+        fadeImg.style.pointerEvents = "none";
+
+        // append to body
+        document.body.appendChild(fadeImg);
+
+        // trigger fade-in
+        requestAnimationFrame(() => {
+          fadeImg.style.opacity = "1";
+        });
+
+        // optional: fade in hero content
+        const hero = document.getElementById("heroContent");
+        if (hero) hero.style.opacity = "1";
+
+        // navigate after fade-in
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1500);
+      };
+    }
+  });
+
+</script>
+</body>
+</html>

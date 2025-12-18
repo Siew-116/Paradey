@@ -1,0 +1,922 @@
+{
+  "HKDisneyland": {
+    "AirQuality": {
+      "unit": "AOD",
+      "lat": 22.314,
+      "lon": 114.041,
+      "historical_10y": [
+        {
+          "year": 2015,
+          "value": 0.4732537666956584
+        },
+        {
+          "year": 2016,
+          "value": 0.5204579768081506
+        },
+        {
+          "year": 2017,
+          "value": 0.4392690757910411
+        },
+        {
+          "year": 2018,
+          "value": 0.4538819467027982
+        },
+        {
+          "year": 2019,
+          "value": 0.4868975232044856
+        },
+        {
+          "year": 2020,
+          "value": 0.4420834792157014
+        },
+        {
+          "year": 2021,
+          "value": 0.42439745863278705
+        },
+        {
+          "year": 2022,
+          "value": 0.4020470045506954
+        },
+        {
+          "year": 2023,
+          "value": 0.46598419298728305
+        },
+        {
+          "year": 2024,
+          "value": 0.44990993415315944
+        }
+      ],
+      "mean": 0.455818235874176,
+      "std": 0.19014694642890864,
+      "pred_values": {
+        "2025": {
+          "Jan": 0.40848531325658044,
+          "Feb": 0.4205637653668717,
+          "Mar": 0.7336286067962661,
+          "Apr": 0.8398502747217798,
+          "May": 0.4545229017734478,
+          "Jun": 0.28812352021535403,
+          "Jul": 0.22540992101034263,
+          "Aug": 0.2960737347602844,
+          "Sep": 0.46050381263096796,
+          "Oct": 0.3624237596988671,
+          "Nov": 0.30057530005772826,
+          "Dec": 0.31534238258997327
+        },
+        "2026": {
+          "Jan": 0.40529264988321145,
+          "Feb": 0.4025440418358954,
+          "Mar": 0.7215404120358571,
+          "Apr": 0.8475835673736789,
+          "May": 0.4611827471039458,
+          "Jun": 0.29271584496353853,
+          "Jul": 0.21507133480275087,
+          "Aug": 0.27757642160761975,
+          "Sep": 0.45912301016575974,
+          "Oct": 0.3520210211927228,
+          "Nov": 0.295356891010746,
+          "Dec": 0.309256162246065
+        }
+      },
+      "threshold_statuses": {
+        "2025": {
+          "Jan": "⚠️ Above Threshold",
+          "Feb": "⚠️ Above Threshold",
+          "Mar": "⚠️ Above Threshold",
+          "Apr": "⚠️ Above Threshold",
+          "May": "⚠️ Above Threshold",
+          "Jun": "⚠️ Above Threshold",
+          "Jul": "✅ Below Threshold",
+          "Aug": "⚠️ Above Threshold",
+          "Sep": "⚠️ Above Threshold",
+          "Oct": "⚠️ Above Threshold",
+          "Nov": "⚠️ Above Threshold",
+          "Dec": "⚠️ Above Threshold"
+        },
+        "2026": {
+          "Jan": "⚠️ Above Threshold",
+          "Feb": "⚠️ Above Threshold",
+          "Mar": "⚠️ Above Threshold",
+          "Apr": "⚠️ Above Threshold",
+          "May": "⚠️ Above Threshold",
+          "Jun": "⚠️ Above Threshold",
+          "Jul": "✅ Below Threshold",
+          "Aug": "⚠️ Above Threshold",
+          "Sep": "⚠️ Above Threshold",
+          "Oct": "⚠️ Above Threshold",
+          "Nov": "⚠️ Above Threshold",
+          "Dec": "⚠️ Above Threshold"
+        }
+      },
+      "anomalies": {
+        "2025": {
+          "Jan": "✅ Within normal range",
+          "Feb": "✅ Within normal range",
+          "Mar": "↑ Slightly above normal",
+          "Apr": "⚠️ Much higher than usual",
+          "May": "✅ Within normal range",
+          "Jun": "✅ Within normal range",
+          "Jul": "↓ Slightly below normal",
+          "Aug": "✅ Within normal range",
+          "Sep": "✅ Within normal range",
+          "Oct": "✅ Within normal range",
+          "Nov": "✅ Within normal range",
+          "Dec": "✅ Within normal range"
+        },
+        "2026": {
+          "Jan": "✅ Within normal range",
+          "Feb": "✅ Within normal range",
+          "Mar": "↑ Slightly above normal",
+          "Apr": "⚠️ Much higher than usual",
+          "May": "✅ Within normal range",
+          "Jun": "✅ Within normal range",
+          "Jul": "↓ Slightly below normal",
+          "Aug": "✅ Within normal range",
+          "Sep": "✅ Within normal range",
+          "Oct": "✅ Within normal range",
+          "Nov": "✅ Within normal range",
+          "Dec": "✅ Within normal range"
+        }
+      },
+      "seasonal_trends": {
+        "Jan": "😐 Normal range",
+        "Feb": "😐 Normal range",
+        "Mar": "☁️ Usually high",
+        "Apr": "☁️ Usually high",
+        "May": "😐 Normal range",
+        "Jun": "🌤 Usually low",
+        "Jul": "😐 Normal range",
+        "Aug": "😐 Normal range",
+        "Sep": "😐 Normal range",
+        "Oct": "😐 Normal range",
+        "Nov": "😐 Normal range",
+        "Dec": "😐 Normal range"
+      }
+    },
+    "Rainfall": {
+      "unit": "mm/day",
+      "lat": 22.314,
+      "lon": 114.041,
+      "historical_10y": [
+        {
+          "year": 2015,
+          "value": 1.5233778784093488
+        },
+        {
+          "year": 2016,
+          "value": 1.6435374049365237
+        },
+        {
+          "year": 2017,
+          "value": 1.5033066840860225
+        },
+        {
+          "year": 2018,
+          "value": 1.3862182314923643
+        },
+        {
+          "year": 2019,
+          "value": 1.6224483297520578
+        },
+        {
+          "year": 2020,
+          "value": 1.5757544335795348
+        },
+        {
+          "year": 2021,
+          "value": 1.5138887541102264
+        },
+        {
+          "year": 2022,
+          "value": 1.22754523587619
+        },
+        {
+          "year": 2023,
+          "value": 1.2787093754411671
+        },
+        {
+          "year": 2024,
+          "value": 1.330098387897749
+        }
+      ],
+      "mean": 1.4604884715581186,
+      "std": 1.7177249807381458,
+      "pred_values": {
+        "2025": {
+          "Jan": -0.018975650411617195,
+          "Feb": 0.010675343228284007,
+          "Mar": 0.19991589289474732,
+          "Apr": 0.9391012870764683,
+          "May": 0.6913269212237196,
+          "Jun": 4.556399316061274,
+          "Jul": 2.525086394743994,
+          "Aug": 3.593941878061713,
+          "Sep": 2.820943415863354,
+          "Oct": 0.07763971130771097,
+          "Nov": -0.005465446326791579,
+          "Dec": 0.0009521187984803392
+        },
+        "2026": {
+          "Jan": -0.0262199351031569,
+          "Feb": 0.005669795217290385,
+          "Mar": 0.21520114771439935,
+          "Apr": 0.9953913959047327,
+          "May": 0.4844240185974513,
+          "Jun": 4.5897779518484185,
+          "Jul": 2.37976952709937,
+          "Aug": 3.508107425348612,
+          "Sep": 2.9025727610991794,
+          "Oct": -0.03494523286710205,
+          "Nov": -0.016854158413089237,
+          "Dec": 0.0005882176795750649
+        }
+      },
+      "threshold_statuses": {
+        "2025": {
+          "Jan": "Zero value",
+          "Feb": "✅ Below Threshold",
+          "Mar": "✅ Below Threshold",
+          "Apr": "✅ Below Threshold",
+          "May": "✅ Below Threshold",
+          "Jun": "✅ Below Threshold",
+          "Jul": "✅ Below Threshold",
+          "Aug": "✅ Below Threshold",
+          "Sep": "✅ Below Threshold",
+          "Oct": "✅ Below Threshold",
+          "Nov": "Zero value",
+          "Dec": "✅ Below Threshold"
+        },
+        "2026": {
+          "Jan": "Zero value",
+          "Feb": "✅ Below Threshold",
+          "Mar": "✅ Below Threshold",
+          "Apr": "✅ Below Threshold",
+          "May": "✅ Below Threshold",
+          "Jun": "✅ Below Threshold",
+          "Jul": "✅ Below Threshold",
+          "Aug": "✅ Below Threshold",
+          "Sep": "✅ Below Threshold",
+          "Oct": "Zero value",
+          "Nov": "Zero value",
+          "Dec": "✅ Below Threshold"
+        }
+      },
+      "anomalies": {
+        "2025": {
+          "Jan": "Zero value",
+          "Feb": "✅ Within normal range",
+          "Mar": "✅ Within normal range",
+          "Apr": "✅ Within normal range",
+          "May": "✅ Within normal range",
+          "Jun": "↑ Slightly above normal",
+          "Jul": "✅ Within normal range",
+          "Aug": "↑ Slightly above normal",
+          "Sep": "✅ Within normal range",
+          "Oct": "✅ Within normal range",
+          "Nov": "Zero value",
+          "Dec": "✅ Within normal range"
+        },
+        "2026": {
+          "Jan": "Zero value",
+          "Feb": "✅ Within normal range",
+          "Mar": "✅ Within normal range",
+          "Apr": "✅ Within normal range",
+          "May": "✅ Within normal range",
+          "Jun": "↑ Slightly above normal",
+          "Jul": "✅ Within normal range",
+          "Aug": "↑ Slightly above normal",
+          "Sep": "✅ Within normal range",
+          "Oct": "Zero value",
+          "Nov": "Zero value",
+          "Dec": "✅ Within normal range"
+        }
+      },
+      "seasonal_trends": {
+        "Jan": "😐 Normal range",
+        "Feb": "😐 Normal range",
+        "Mar": "😐 Normal range",
+        "Apr": "😐 Normal range",
+        "May": "😐 Normal range",
+        "Jun": "☁️ Usually high",
+        "Jul": "☁️ Usually high",
+        "Aug": "☁️ Usually high",
+        "Sep": "😐 Normal range",
+        "Oct": "😐 Normal range",
+        "Nov": "😐 Normal range",
+        "Dec": "😐 Normal range"
+      }
+    },
+    "Snowfall": {
+      "unit": "cm/day",
+      "lat": 22.314,
+      "lon": 114.041,
+      "historical_10y": [
+        {
+          "year": 2015,
+          "value": 0.0
+        },
+        {
+          "year": 2016,
+          "value": 0.0032811376016184113
+        },
+        {
+          "year": 2017,
+          "value": 0.0
+        },
+        {
+          "year": 2018,
+          "value": 0.0
+        },
+        {
+          "year": 2019,
+          "value": 0.0
+        },
+        {
+          "year": 2020,
+          "value": 0.0
+        },
+        {
+          "year": 2021,
+          "value": 0.0
+        },
+        {
+          "year": 2022,
+          "value": 0.0
+        },
+        {
+          "year": 2023,
+          "value": 0.0
+        },
+        {
+          "year": 2024,
+          "value": 7.99432769982289e-06
+        }
+      ],
+      "mean": 0.0003289131929318234,
+      "std": 0.003579235889900373,
+      "pred_values": {
+        "2025": {
+          "Jan": -0.005211447389630308,
+          "Feb": 0.0,
+          "Mar": 0.0,
+          "Apr": 0.0,
+          "May": 0.0,
+          "Jun": 0.0,
+          "Jul": 0.0,
+          "Aug": 0.0,
+          "Sep": 0.0,
+          "Oct": 0.0,
+          "Nov": 0.0,
+          "Dec": 0.0
+        },
+        "2026": {
+          "Jan": -0.0068766120632326455,
+          "Feb": 0.0,
+          "Mar": 0.0,
+          "Apr": 0.0,
+          "May": 0.0,
+          "Jun": 0.0,
+          "Jul": 0.0,
+          "Aug": 0.0,
+          "Sep": 0.0,
+          "Oct": 0.0,
+          "Nov": 0.0,
+          "Dec": 0.0
+        }
+      },
+      "threshold_statuses": {
+        "2025": {
+          "Jan": "Zero value",
+          "Feb": "Zero value",
+          "Mar": "Zero value",
+          "Apr": "Zero value",
+          "May": "Zero value",
+          "Jun": "Zero value",
+          "Jul": "Zero value",
+          "Aug": "Zero value",
+          "Sep": "Zero value",
+          "Oct": "Zero value",
+          "Nov": "Zero value",
+          "Dec": "Zero value"
+        },
+        "2026": {
+          "Jan": "Zero value",
+          "Feb": "Zero value",
+          "Mar": "Zero value",
+          "Apr": "Zero value",
+          "May": "Zero value",
+          "Jun": "Zero value",
+          "Jul": "Zero value",
+          "Aug": "Zero value",
+          "Sep": "Zero value",
+          "Oct": "Zero value",
+          "Nov": "Zero value",
+          "Dec": "Zero value"
+        }
+      },
+      "anomalies": {
+        "2025": {
+          "Jan": "↓ Slightly below normal",
+          "Feb": "Zero value",
+          "Mar": "Zero value",
+          "Apr": "Zero value",
+          "May": "Zero value",
+          "Jun": "Zero value",
+          "Jul": "Zero value",
+          "Aug": "Zero value",
+          "Sep": "Zero value",
+          "Oct": "Zero value",
+          "Nov": "Zero value",
+          "Dec": "Zero value"
+        },
+        "2026": {
+          "Jan": "⚠️ Much lower than usual",
+          "Feb": "Zero value",
+          "Mar": "Zero value",
+          "Apr": "Zero value",
+          "May": "Zero value",
+          "Jun": "Zero value",
+          "Jul": "Zero value",
+          "Aug": "Zero value",
+          "Sep": "Zero value",
+          "Oct": "Zero value",
+          "Nov": "Zero value",
+          "Dec": "Zero value"
+        }
+      },
+      "seasonal_trends": {
+        "Jan": "☁️ Usually high",
+        "Feb": "😐 Normal range",
+        "Mar": "😐 Normal range",
+        "Apr": "😐 Normal range",
+        "May": "😐 Normal range",
+        "Jun": "😐 Normal range",
+        "Jul": "😐 Normal range",
+        "Aug": "😐 Normal range",
+        "Sep": "😐 Normal range",
+        "Oct": "😐 Normal range",
+        "Nov": "😐 Normal range",
+        "Dec": "😐 Normal range"
+      }
+    },
+    "Humidity": {
+      "unit": "%",
+      "lat": 22.314,
+      "lon": 114.041,
+      "historical_10y": [
+        {
+          "year": 2015,
+          "value": 82.17202910190817
+        },
+        {
+          "year": 2016,
+          "value": 85.74810165816001
+        },
+        {
+          "year": 2017,
+          "value": 80.37666269109202
+        },
+        {
+          "year": 2018,
+          "value": 80.48488182869251
+        },
+        {
+          "year": 2019,
+          "value": 81.03111138869234
+        },
+        {
+          "year": 2020,
+          "value": 80.97201295310893
+        },
+        {
+          "year": 2021,
+          "value": 78.46216480462614
+        },
+        {
+          "year": 2022,
+          "value": 80.86506389193845
+        },
+        {
+          "year": 2023,
+          "value": 81.10536839725343
+        },
+        {
+          "year": 2024,
+          "value": 81.62539370401123
+        }
+      ],
+      "mean": 81.28427904194832,
+      "std": 5.660199428321821,
+      "pred_values": {
+        "2025": {
+          "Jan": 74.93790213872421,
+          "Feb": 79.46552812804667,
+          "Mar": 80.69443525940301,
+          "Apr": 83.04588010955791,
+          "May": 83.97880256117969,
+          "Jun": 88.95827435755712,
+          "Jul": 83.54489835950756,
+          "Aug": 84.73620987473852,
+          "Sep": 80.68832535438247,
+          "Oct": 75.17155130162803,
+          "Nov": 73.75869313272915,
+          "Dec": 69.98920996153765
+        },
+        "2026": {
+          "Jan": 74.6503359314978,
+          "Feb": 79.4477071614968,
+          "Mar": 80.28925570824856,
+          "Apr": 82.98298299895498,
+          "May": 83.6107881673114,
+          "Jun": 89.1530688312406,
+          "Jul": 83.29698981834144,
+          "Aug": 84.71890390178893,
+          "Sep": 80.54798294908443,
+          "Oct": 74.75954233166885,
+          "Nov": 73.14538731927132,
+          "Dec": 69.37737669928902
+        }
+      },
+      "threshold_statuses": {
+        "2025": {
+          "Jan": "✅ Below Threshold",
+          "Feb": "⚠️ Above Threshold",
+          "Mar": "⚠️ Above Threshold",
+          "Apr": "⚠️ Above Threshold",
+          "May": "⚠️ Above Threshold",
+          "Jun": "⚠️ Above Threshold",
+          "Jul": "⚠️ Above Threshold",
+          "Aug": "⚠️ Above Threshold",
+          "Sep": "⚠️ Above Threshold",
+          "Oct": "⚠️ Above Threshold",
+          "Nov": "✅ Below Threshold",
+          "Dec": "✅ Below Threshold"
+        },
+        "2026": {
+          "Jan": "✅ Below Threshold",
+          "Feb": "⚠️ Above Threshold",
+          "Mar": "⚠️ Above Threshold",
+          "Apr": "⚠️ Above Threshold",
+          "May": "⚠️ Above Threshold",
+          "Jun": "⚠️ Above Threshold",
+          "Jul": "⚠️ Above Threshold",
+          "Aug": "⚠️ Above Threshold",
+          "Sep": "⚠️ Above Threshold",
+          "Oct": "✅ Below Threshold",
+          "Nov": "✅ Below Threshold",
+          "Dec": "✅ Below Threshold"
+        }
+      },
+      "anomalies": {
+        "2025": {
+          "Jan": "↓ Slightly below normal",
+          "Feb": "✅ Within normal range",
+          "Mar": "✅ Within normal range",
+          "Apr": "✅ Within normal range",
+          "May": "✅ Within normal range",
+          "Jun": "↑ Slightly above normal",
+          "Jul": "✅ Within normal range",
+          "Aug": "✅ Within normal range",
+          "Sep": "✅ Within normal range",
+          "Oct": "↓ Slightly below normal",
+          "Nov": "↓ Slightly below normal",
+          "Dec": "↓ Slightly below normal"
+        },
+        "2026": {
+          "Jan": "↓ Slightly below normal",
+          "Feb": "✅ Within normal range",
+          "Mar": "✅ Within normal range",
+          "Apr": "✅ Within normal range",
+          "May": "✅ Within normal range",
+          "Jun": "↑ Slightly above normal",
+          "Jul": "✅ Within normal range",
+          "Aug": "✅ Within normal range",
+          "Sep": "✅ Within normal range",
+          "Oct": "↓ Slightly below normal",
+          "Nov": "↓ Slightly below normal",
+          "Dec": "⚠️ Much lower than usual"
+        }
+      },
+      "seasonal_trends": {
+        "Jan": "😐 Normal range",
+        "Feb": "😐 Normal range",
+        "Mar": "😐 Normal range",
+        "Apr": "😐 Normal range",
+        "May": "😐 Normal range",
+        "Jun": "☁️ Usually high",
+        "Jul": "😐 Normal range",
+        "Aug": "😐 Normal range",
+        "Sep": "😐 Normal range",
+        "Oct": "😐 Normal range",
+        "Nov": "😐 Normal range",
+        "Dec": "🌤 Usually low"
+      }
+    },
+    "Temperature": {
+      "unit": "°C",
+      "lat": 22.314,
+      "lon": 114.041,
+      "historical_10y": [
+        {
+          "year": 2015,
+          "value": 23.929650878906273
+        },
+        {
+          "year": 2016,
+          "value": 23.27828114827476
+        },
+        {
+          "year": 2017,
+          "value": 23.761516825358097
+        },
+        {
+          "year": 2018,
+          "value": 23.57221883138023
+        },
+        {
+          "year": 2019,
+          "value": 24.30177459716799
+        },
+        {
+          "year": 2020,
+          "value": 23.978748575846378
+        },
+        {
+          "year": 2021,
+          "value": 24.344158426920597
+        },
+        {
+          "year": 2022,
+          "value": 23.532507832845074
+        },
+        {
+          "year": 2023,
+          "value": 24.17817077636721
+        },
+        {
+          "year": 2024,
+          "value": 24.200242614746116
+        }
+      ],
+      "mean": 23.907727050781272,
+      "std": 4.671362575303672,
+      "pred_values": {
+        "2025": {
+          "Jan": 17.14555664062496,
+          "Feb": 18.633673095703102,
+          "Mar": 21.984338378906273,
+          "Apr": 24.66277262369789,
+          "May": 26.460984293619845,
+          "Jun": 28.45544433593753,
+          "Jul": 29.86683553059899,
+          "Aug": 29.352834065755218,
+          "Sep": 29.121993001302144,
+          "Oct": 25.592932128906277,
+          "Nov": 22.547045898437556,
+          "Dec": 16.901234944661525
+        },
+        "2026": {
+          "Jan": 17.21189242276276,
+          "Feb": 18.798301558061098,
+          "Mar": 22.20012151544745,
+          "Apr": 24.82994366270117,
+          "May": 26.41050452030072,
+          "Jun": 28.41894031871452,
+          "Jul": 29.977685176964997,
+          "Aug": 29.40053562973486,
+          "Sep": 29.227510949337187,
+          "Oct": 25.58547807173298,
+          "Nov": 22.567416104403474,
+          "Dec": 16.794209613222108
+        }
+      },
+      "threshold_statuses": {
+        "2025": {
+          "Jan": "✅ Below Threshold",
+          "Feb": "✅ Below Threshold",
+          "Mar": "✅ Below Threshold",
+          "Apr": "✅ Below Threshold",
+          "May": "✅ Below Threshold",
+          "Jun": "✅ Below Threshold",
+          "Jul": "✅ Below Threshold",
+          "Aug": "✅ Below Threshold",
+          "Sep": "✅ Below Threshold",
+          "Oct": "✅ Below Threshold",
+          "Nov": "✅ Below Threshold",
+          "Dec": "✅ Below Threshold"
+        },
+        "2026": {
+          "Jan": "✅ Below Threshold",
+          "Feb": "✅ Below Threshold",
+          "Mar": "✅ Below Threshold",
+          "Apr": "✅ Below Threshold",
+          "May": "✅ Below Threshold",
+          "Jun": "✅ Below Threshold",
+          "Jul": "✅ Below Threshold",
+          "Aug": "✅ Below Threshold",
+          "Sep": "✅ Below Threshold",
+          "Oct": "✅ Below Threshold",
+          "Nov": "✅ Below Threshold",
+          "Dec": "✅ Below Threshold"
+        }
+      },
+      "anomalies": {
+        "2025": {
+          "Jan": "↓ Slightly below normal",
+          "Feb": "↓ Slightly below normal",
+          "Mar": "✅ Within normal range",
+          "Apr": "✅ Within normal range",
+          "May": "✅ Within normal range",
+          "Jun": "✅ Within normal range",
+          "Jul": "↑ Slightly above normal",
+          "Aug": "↑ Slightly above normal",
+          "Sep": "↑ Slightly above normal",
+          "Oct": "✅ Within normal range",
+          "Nov": "✅ Within normal range",
+          "Dec": "↓ Slightly below normal"
+        },
+        "2026": {
+          "Jan": "↓ Slightly below normal",
+          "Feb": "↓ Slightly below normal",
+          "Mar": "✅ Within normal range",
+          "Apr": "✅ Within normal range",
+          "May": "✅ Within normal range",
+          "Jun": "✅ Within normal range",
+          "Jul": "↑ Slightly above normal",
+          "Aug": "↑ Slightly above normal",
+          "Sep": "↑ Slightly above normal",
+          "Oct": "✅ Within normal range",
+          "Nov": "✅ Within normal range",
+          "Dec": "↓ Slightly below normal"
+        }
+      },
+      "seasonal_trends": {
+        "Jan": "🌤 Usually low",
+        "Feb": "🌤 Usually low",
+        "Mar": "😐 Normal range",
+        "Apr": "😐 Normal range",
+        "May": "😐 Normal range",
+        "Jun": "☁️ Usually high",
+        "Jul": "☁️ Usually high",
+        "Aug": "☁️ Usually high",
+        "Sep": "😐 Normal range",
+        "Oct": "😐 Normal range",
+        "Nov": "😐 Normal range",
+        "Dec": "🌤 Usually low"
+      }
+    },
+    "Windspeed": {
+      "unit": "km/h",
+      "lat": 22.314,
+      "lon": 114.041,
+      "historical_10y": [
+        {
+          "year": 2015,
+          "value": 10.123243618011475
+        },
+        {
+          "year": 2016,
+          "value": 10.525560870766641
+        },
+        {
+          "year": 2017,
+          "value": 11.066020560264588
+        },
+        {
+          "year": 2018,
+          "value": 9.983170223236085
+        },
+        {
+          "year": 2019,
+          "value": 9.31008485555649
+        },
+        {
+          "year": 2020,
+          "value": 11.738334023952484
+        },
+        {
+          "year": 2021,
+          "value": 10.836657214164736
+        },
+        {
+          "year": 2022,
+          "value": 11.294095623493197
+        },
+        {
+          "year": 2023,
+          "value": 10.490001332759856
+        },
+        {
+          "year": 2024,
+          "value": 11.697295117378234
+        }
+      ],
+      "mean": 10.706446343958378,
+      "std": 3.4331131907845087,
+      "pred_values": {
+        "2025": {
+          "Jan": 12.545300388336202,
+          "Feb": 10.469390201568622,
+          "Mar": 8.129059810638466,
+          "Apr": 10.368490934371948,
+          "May": 9.477902784347691,
+          "Jun": 11.273413295745854,
+          "Jul": 10.044384670257458,
+          "Aug": 8.470774154663047,
+          "Sep": 6.923692030906636,
+          "Oct": 16.972431793212536,
+          "Nov": 14.282423057556002,
+          "Dec": 17.538745880127067
+        },
+        "2026": {
+          "Jan": 12.514206057461848,
+          "Feb": 10.468227736733198,
+          "Mar": 7.927894701524224,
+          "Apr": 10.682102381099298,
+          "May": 9.333540287018025,
+          "Jun": 11.079680879766272,
+          "Jul": 10.00418128447086,
+          "Aug": 8.68133502179927,
+          "Sep": 7.1803236040201455,
+          "Oct": 17.689429649005888,
+          "Nov": 14.573477751991845,
+          "Dec": 17.819546533064567
+        }
+      },
+      "threshold_statuses": {
+        "2025": {
+          "Jan": "✅ Below Threshold",
+          "Feb": "✅ Below Threshold",
+          "Mar": "✅ Below Threshold",
+          "Apr": "✅ Below Threshold",
+          "May": "✅ Below Threshold",
+          "Jun": "✅ Below Threshold",
+          "Jul": "✅ Below Threshold",
+          "Aug": "✅ Below Threshold",
+          "Sep": "✅ Below Threshold",
+          "Oct": "✅ Below Threshold",
+          "Nov": "✅ Below Threshold",
+          "Dec": "✅ Below Threshold"
+        },
+        "2026": {
+          "Jan": "✅ Below Threshold",
+          "Feb": "✅ Below Threshold",
+          "Mar": "✅ Below Threshold",
+          "Apr": "✅ Below Threshold",
+          "May": "✅ Below Threshold",
+          "Jun": "✅ Below Threshold",
+          "Jul": "✅ Below Threshold",
+          "Aug": "✅ Below Threshold",
+          "Sep": "✅ Below Threshold",
+          "Oct": "✅ Below Threshold",
+          "Nov": "✅ Below Threshold",
+          "Dec": "✅ Below Threshold"
+        }
+      },
+      "anomalies": {
+        "2025": {
+          "Jan": "✅ Within normal range",
+          "Feb": "✅ Within normal range",
+          "Mar": "✅ Within normal range",
+          "Apr": "✅ Within normal range",
+          "May": "✅ Within normal range",
+          "Jun": "✅ Within normal range",
+          "Jul": "✅ Within normal range",
+          "Aug": "✅ Within normal range",
+          "Sep": "↓ Slightly below normal",
+          "Oct": "↑ Slightly above normal",
+          "Nov": "↑ Slightly above normal",
+          "Dec": "↑ Slightly above normal"
+        },
+        "2026": {
+          "Jan": "✅ Within normal range",
+          "Feb": "✅ Within normal range",
+          "Mar": "✅ Within normal range",
+          "Apr": "✅ Within normal range",
+          "May": "✅ Within normal range",
+          "Jun": "✅ Within normal range",
+          "Jul": "✅ Within normal range",
+          "Aug": "✅ Within normal range",
+          "Sep": "↓ Slightly below normal",
+          "Oct": "⚠️ Much higher than usual",
+          "Nov": "↑ Slightly above normal",
+          "Dec": "⚠️ Much higher than usual"
+        }
+      },
+      "seasonal_trends": {
+        "Jan": "😐 Normal range",
+        "Feb": "😐 Normal range",
+        "Mar": "😐 Normal range",
+        "Apr": "😐 Normal range",
+        "May": "😐 Normal range",
+        "Jun": "😐 Normal range",
+        "Jul": "😐 Normal range",
+        "Aug": "😐 Normal range",
+        "Sep": "🌤 Usually low",
+        "Oct": "😐 Normal range",
+        "Nov": "😐 Normal range",
+        "Dec": "☁️ Usually high"
+      }
+    }
+  }
+}

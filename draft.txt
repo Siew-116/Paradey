@@ -1,0 +1,267 @@
+APP NAME: PARADEY
+
+=== DATASET ===
+=source=
+- MERRA-2 ( Modern-Era Retrospective analysis for Research and Applications version 2)
+= is a global coverage reanalysis dataset (NASA combines satellite + ground + model data into a consistent, gridded dataset)
+- produced by NASA Global Modelling & Assimilation Office (GMAO)
+- distributed by GES DISC (NASA Goddard Earth Science Data and Information Services Center)
+
+- has 100 collections 
+> 95 “standard” ones (surface, atmosphere, land, chemistry, etc.)
+> 4 climate-statistical (e.g., climatology averages)
+> 1 value-added PM2.5 dataset (country-level monthly air quality).
+
+- variables: meterological, radiation, aerosol fields
+>
+Use SLV for temp, humidity, winds.
+Use FLX for precipitation & snowfall.
+Use AER + formula for PM2.5.
+Use CHM for CO.
+Use ASM if you need vertical atmospheric profiles.
+
+- temporal range: 1980-present
+- temporal resolutions: 
+>Hourly
+>3-hourly
+>Daily
+>Monthly
+>Monthly-diurnal (average by hour of day).
+
+>2D data (surface variables, e.g. temperature, winds): 0.5° × 0.625° (~50 km)
+>3D data (atmosphere vertical levels): same grid horizontally + 72 model levels (height) or 42 pressure levels.
+
+- format: NetCDF4 (self-describing file, works with Python, MATLAB, R).
+- latency: ~3 weeks (data for today is available ~3 weeks later).
+
+- link
+> OPENDAP
+https://disc.gsfc.nasa.gov/information/tools?keywords=inst1_2d_asm_Nx&title=OPeNDAP%20and%20GDS
+
+> Remotely access the hourly MERRA-2 files through OPeNDAP URL + Python
+https://disc.gsfc.nasa.gov/information/howto?title=How%20to%20Access%20MERRA-2%20Data%20using%20OPeNDAP%20with%20Python3%20and%20Calculate%20Daily%2FWeekly%2FMonthly%20Statistics%20from%20Hourly%20Data%20
+
+> METTA-2 2D PRODUCT (from OPENDAP API)
+https://goldsmr4.gesdisc.eosdis.nasa.gov/opendap/MERRA2/M2T1NXSLV.5.12.4/2022/01/MERRA2_400.tavg1_2d_slv_Nx.20220101.nc4.html
+
+> EXAMPLE OF 24hr DATA on CERTAIN LAT LOT
+- query via OPeNDAP (subset by lat/lon, date range, variable).
+https://goldsmr4.gesdisc.eosdis.nasa.gov/opendap/MERRA2/M2T1NXSLV.5.12.4/2022/01/MERRA2_400.tavg1_2d_slv_Nx.20220101.nc4.ascii?T2M[0:23][180][300]
+
+
+=== VARIABLES USED (monthly) ===
+> DATA MODEL:
+/MERRA2_MONTHLY/M2TMNXSLV.5.12.4/
+1. TEMPERATURE
+T2M → 2-meter air temperature (monthly mean).
+
+T10M → 10-meter air temperature (less common, but sometimes used for surface diagnostics).
+T2MWET → Wet-bulb temperature at 2m.
+T2MDEW → Dew point temperature at 2m.
+TS → Surface skin temperature.
+
+-unit: Kelvin
+
+2. WINDSPEED
+U10M, V10M → 10m wind components.
+Compute windspeed = √(U10M² + V10M²).
+U2M, V2M → 2m wind components (closer to “near-surface wind”).
+U50M, V50M → 50m winds (good for energy studies, e.g., wind power).
+👉 For a climate dashboard, 10m winds (U10M, V10M) are the standard.
+
+3. HUMIDITY
+QV2M → Specific humidity at 2m.
+QV10M → Specific humidity at 10m.
+TQV → ToTal column water vapor (all the water vapor integrated through the atmosphere).
+TQL, TQI → Column liquid/ice water (cloud water content).
+👉 For climate dashboards, QV2M (surface humidity) + TQV (atmospheric moisture) are most useful.
+
+> DATA MODEL :/MERRA2_MONTHLY/M2TMNXFLX.5.12.4/
+1. SNOWFALL
+PRECSNO = hourly snowfall flux on a lat–lon grid.
+Units = kg/m²/s (can be converted to mm/hr of snowfall water equivalent).
+Values near 1e15 mean missing data.
+scale_factor=1 and add_offset=0 → no transformation needed.
+
+montlhy link: https://goldsmr4.gesdisc.eosdis.nasa.gov/opendap/MERRA2_MONTHLY/M2TMNXFLX.5.12.4/2004/MERRA2_300.tavgM_2d_flx_Nx.200401.nc4.ascii?PRECSNO[0][270][100]
+hourly link: https://goldsmr4.gesdisc.eosdis.nasa.gov/opendap/MERRA2/M2T1NXFLX.5.12.4/1988/07/MERRA2_100.tavg1_2d_flx_Nx.19880705.nc4.ascii?PRECSNO[0:23][270][100]
+
+2. RAINFALL
+PRECCON (convective rain rate)
++
+PRECL (large-scale rain rate)
+
+
+DATA MODEL: /MERRA2_MONTHLY/M2TMNXAER.5.12.4/
+
+1. AIR QUALITY
+PM2.5 (PM25_RH35_GCC) → main health indicator
+Ozone (O3) → secondary pollutant, smog indicator
+Aerosol Optical Depth (TOTEXTTAU) → visibility/haze indicator
+
+PM25_RH35_GCC → PM2.5 concentration (µg/m³) — best single indicator for air quality & health
+TOTEXTTAU → Total Aerosol Optical Depth (AOD) — proxy for haze/dustiness
+
+
+
+
+
+
+
+
+
+
+
+
+===== USER INTERACTION FLOW ===
+- retrieve and preprocess dataset (masking missing value, unit, subsetting)
+- integrate map
+- REST 
+- (scrollable, enlarge icon)result: prediction, trend and analysis, AI recommendation, Notes and annotation, Export data
+- frontend design
+
+You want your climate dashboard to be interactive:
+User clicks/chooses a location on a map 🌍
+Selects which variables they’re interested in (e.g., rainfall, temperature, windspeed, PM2.5, haze).
+Backend queries MERRA-2 monthly data for that location.
+Dashboard generates:Time series trend 📈,Current condition summary
+,Simple recommendation/insight (e.g., “Rainfall is higher than average → possible flood risk”).
+
+🔹 Architecture Overview
+
+Frontend (Map + Variable Selection)
+User selects lat/lon on map (Leaflet/Mapbox).
+User chooses variables via dropdown (Temp, Rainfall, Air Quality, etc).
+Sends request → backend API.
+Backend (Data Query + Processing)
+
+Use xarray/netCDF4 to access MERRA-2 OPeNDAP files.
+Extract chosen variable at selected lat/lon.
+Convert units, compute derived metrics (windspeed, rainfall totals, etc).
+Return JSON with results.
+
+Analysis & Recommendations
+Compare last 3–5 years monthly values with long-term average.
+
+Simple rule-based recommendations, e.g.:
+Temp ↑ & Humidity ↑ → “Hot and humid: higher heat stress risk.”
+Rainfall ↑ above average → “Possible flood season, stay alert.”
+PM2.5 ↑ above WHO threshold → “Air quality unhealthy, consider mask outdoors.”
+
+Frontend Visualization
+Show charts (time series, anomaly bars).
+Show recommendation text.
+Optional: compare user’s location vs regional/global average.
+
+
+=== RULE BASED RECOMMENDATION ===
+function getRecommendation(variable, value) {
+  const rules = {
+    T2M: [
+      [v => v < 15, "Cool weather, light jacket recommended."],
+      [v => v >= 15 && v <= 30, "Comfortable temperature."],
+      [v => v > 30, "Hot weather, stay hydrated and avoid long sun exposure."]
+    ],
+    RAIN: [
+      [v => v === 0, "Dry conditions."],
+      [v => v > 0 && v <= 10, "Light rain, may need an umbrella."],
+      [v => v > 10, "Heavy rainfall, possible flooding in low areas."]
+    ],
+    WIND: [
+      [v => v < 5, "Calm breeze."],
+      [v => v >= 5 && v <= 15, "Windy, secure loose objects."],
+      [v => v > 15, "Strong winds, caution for outdoor activity."]
+    ],
+    HUMIDITY: [
+      [v => v < 30, "Dry air, may cause discomfort."],
+      [v => v >= 30 && v <= 60, "Comfortable humidity."],
+      [v => v > 60, "Humid, may feel sticky."]
+    ],
+    PM25: [
+      [v => v <= 12, "Good air quality, safe for all."],
+      [v => v > 12 && v <= 35, "Moderate, sensitive groups take care."],
+      [v => v > 35 && v <= 55, "Unhealthy for sensitive groups."],
+      [v => v > 55, "Unhealthy air quality, limit outdoor activity."]
+    ],
+    AOD: [
+      [v => v < 0.3, "Clear sky, good visibility."],
+      [v => v >= 0.3 && v <= 0.7, "Moderate haze, reduced visibility."],
+      [v => v > 0.7, "Heavy haze/dust, poor visibility and health risk."]
+    ]
+  };
+
+  if (!(variable in rules)) return "No recommendation available.";
+  for (let [cond, msg] of rules[variable]) {
+    if (cond(value)) return msg;
+  }
+  return "No recommendation available.";
+}
+
+T👉 These are easy thresholds so your dashboard can just display something like:
+
+“Today: Hot (32°C), Heavy Rainfall, Windy. Recommendation: Stay hydrated and carry umbrella.”
+
+
+=== USE CASE
+
+3. Example analysis (Rainfall, PM2.5, Temp)
+
+Let’s say user selects Jakarta (rainfall, PM2.5, windspeed):
+
+Pull past 20 years monthly data for that location.
+
+Compute:
+
+📊 Trend: rainfall decreasing 2% per decade.
+
+📊 Seasonal cycle: peak rainfall in Jan–Feb, low in Aug–Sep.
+
+📊 Current year comparison: 2025 Jan rainfall 15% lower than long-term January average.
+
+📊 Air quality: PM2.5 above WHO guideline in dry season.
+
+Rule-based recommendation:
+
+“Expect drier than normal wet season, prepare for possible water shortage.”
+
+“Air quality likely to worsen in dry months — monitor PM2.5 and limit outdoor activity.”
+
+“Windspeed trend shows weakening monsoon flow.”
+
+4. How to generalize in dashboard
+
+Step 1: User picks a location + variables.
+
+Step 2: System loads last 10–30 years of monthly data.
+
+Step 3: Compute:
+
+Seasonal climatology
+
+Anomalies (difference from average)
+
+Trends (linear regression)
+
+Step 4: Show graph + simple recommendation.
+
+👉 Example display for New York (seasons):
+
+Summer avg temp (1995–2025): 27.4°C
+
+Summer 2025 temp: 29.1°C (+1.7°C anomaly)
+
+Trend: +0.25°C/decade
+
+Recommendation: “Hotter summers likely to continue. Plan for higher cooling demand.”
+
+
+
+
+
+
+===== BACKEND ==========(python + fastapi)
+- request susbsets with OPENDAP server via HTTP instead of downloading entire files, to get array slices
+https://server/thredds/dodsC/dataset.nc.dods?var[time:1:10][lat:0:10][lon:0:10]
+
+To run FASTAPI server : fastapi dev server.py
+python -m fastapi dev backend/main.py
